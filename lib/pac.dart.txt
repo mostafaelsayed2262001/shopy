@@ -1,0 +1,4 @@
+package
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
+  hexcolor: ^3.0.1

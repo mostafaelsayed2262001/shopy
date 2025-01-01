@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "270520029622",
+    "project_id": "matgarna-ddbaf",
+    "storage_bucket": "matgarna-ddbaf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270520029622:android:1ca83c405a074e965af117",
+        "android_client_info": {
+          "package_name": "com.example.shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqYyim9wYcsPrjRtr7YbpamE4sVIlZUrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
