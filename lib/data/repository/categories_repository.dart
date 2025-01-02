@@ -4,8 +4,8 @@ import 'package:shop/data/services/network/dio/dio_helper.dart';
 
 class CategoriesRepository{
 
-  late final DioHelper dioHelper;
-  CategoriesRepository(this.dioHelper);
+  late final DioHelper dioHelper=DioHelper();
+  CategoriesRepository();
 
   Future<List<Categories>> getAllCategories () async{
     final products = await dioHelper.getAllCategory(url: "products/categories");

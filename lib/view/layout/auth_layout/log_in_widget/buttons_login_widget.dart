@@ -31,11 +31,13 @@ Widget buttonsLoginAuth(BuildContext context) {
                 .logInformKey
                 .currentState!
                 .validate()) {
+
             MainCubit.get(context).getAllPruducts();
             MainCubit.get(context).getAllCategories();
 
             context.go("/homescreen");}
             else {
+
               print("vall");
             }
           } catch (e) {

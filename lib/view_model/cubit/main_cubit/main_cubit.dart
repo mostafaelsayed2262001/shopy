@@ -7,12 +7,12 @@ import 'package:shop/data/services/network/dio/dio_helper.dart';
 import 'package:shop/view_model/cubit/main_cubit/main_state.dart';
 
 class MainCubit extends Cubit<MainState> {
-  AllProductRepository allPruductRepository;
-  CategoriesRepository categoriesRepository;
+  AllProductRepository allPruductRepository = AllProductRepository();
+  CategoriesRepository categoriesRepository=CategoriesRepository();
   List<Product> products = [];
   List<Categories> categories=[];
 
-  MainCubit(this.allPruductRepository,this.categoriesRepository) : super(MainInitial());
+  MainCubit() : super(MainInitial());
 
   static MainCubit get(context) => BlocProvider.of<MainCubit>(context);
 

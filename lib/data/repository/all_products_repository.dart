@@ -3,8 +3,8 @@ import 'package:shop/data/services/network/dio/dio_helper.dart';
 
 class AllProductRepository{
 
-   final DioHelper dioHelper;
-  AllProductRepository(this.dioHelper);
+   final DioHelper dioHelper =DioHelper();
+  AllProductRepository();
 
   Future<List<Product>> getAllProducts () async{
     final categories = await dioHelper.getAllProducts(url: "products");
