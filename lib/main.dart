@@ -6,7 +6,7 @@ import 'package:shop/data/repository/categories_repository.dart';
 import 'package:shop/data/services/network/dio/dio_helper.dart';
 import 'package:shop/firebase_options.dart';
 import 'package:shop/observer.dart';
-import 'package:shop/utils/dependancy_injection.dart' ;
+import 'package:shop/utils/dependancy_injection.dart';
 import 'package:shop/utils/go_router.dart';
 
 import 'package:shop/utils/themes.dart';
@@ -15,10 +15,11 @@ import 'package:shop/view_model/cubit/auth_cubit/auth_cubit.dart';
 import 'package:shop/view_model/cubit/main_cubit/main_cubit.dart';
 import 'package:sizer/sizer.dart';
 
-void main() async{
+void main() async {
+  await injectionGetIt();
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized(); //
-   injectionGetIt();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -31,11 +32,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-    BlocProvider<MainCubit>(create: (context) => MainCubit(locator<AllProductRepository>(),locator<CategoriesRepository>())),
-    BlocProvider<AuthCubit>(create: (context) => AuthCubit()),
-    ],
-      
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MainCubit>(
+            create: (context) => MainCubit(locator<AllProductRepository>(),
+                locator<CategoriesRepository>())),
+        BlocProvider<AuthCubit>(create: (context) => AuthCubit()),
+      ],
       child: Sizer(builder: (context, orientation, deviceType) {
         return MaterialApp.router(
           routerConfig: AppRouter.router,
@@ -44,14 +47,13 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             scaffoldBackgroundColor: kBackGroundColor,
-            appBarTheme: AppBarTheme(backgroundColor: kBackGroundColor,
+            appBarTheme: AppBarTheme(
+                backgroundColor: kBackGroundColor,
                 elevation: 0,
                 iconTheme: IconThemeData(color: kPrimaryColor)),
-
             colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor),
             useMaterial3: true,
           ),
-
         );
       }),
     );
