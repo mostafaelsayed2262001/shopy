@@ -7,6 +7,7 @@ import 'package:shop/utils/textUtils.dart';
 import 'package:shop/utils/themes.dart';
 import 'package:shop/view/layout/bottom_nav_bar_layout/home_layout/custom_search_field.dart';
 import 'package:shop/view/layout/bottom_nav_bar_layout/home_layout/product_card.dart';
+import 'package:shop/view/screens/show_all_pruduct_screen/show_all_product_screen.dart';
 import 'package:shop/view_model/cubit/main_cubit/main_cubit.dart';
 import 'package:shop/view_model/cubit/main_cubit/main_state.dart';
 import 'package:sizer/sizer.dart';
@@ -47,7 +48,9 @@ class HomeScreen extends StatelessWidget {
                   const Spacer(),
                   TextButton(
                     onPressed: () {
+                      // View all product in server
                       debugPrint("الكل");
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ShowAllProductScreen(),) );
                     },
                     child: TextUtils(text: "الكل", color: kActiveColor),
                   ),

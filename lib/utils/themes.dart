@@ -13,7 +13,7 @@ final kBorderColor = HexColor("#190101");
 class ThemesApp {
   static final light = ThemeData(
     primaryColor: kPrimaryColor,
-    appBarTheme: AppBarTheme(color: kPrimaryColor),
+    appBarTheme: AppBarTheme(color: kBackGroundColor),
 
     brightness: Brightness.light,
   );

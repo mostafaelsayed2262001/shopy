@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shop/utils/loading_widget.dart';
 
 import 'package:shop/utils/textUtils.dart';
 import 'package:shop/utils/themes.dart';
@@ -25,23 +26,20 @@ Widget buttonsLoginAuth(BuildContext context) {
         height: 3.h,
       ),
       ElevatedButton(
-        onPressed: () {
-          try {
-            if (BlocProvider.of<AuthCubit>(context)
-                .logInformKey
-                .currentState!
-                .validate()) {
-
-            MainCubit.get(context).getAllPruducts();
-            MainCubit.get(context).getAllCategories();
-
-            context.go("/homescreen");}
-            else {
-
-              print("vall");
-            }
-          } catch (e) {
-            print(e);
+        onPressed: () async {
+          if (BlocProvider
+              .of<AuthCubit>(context)
+              .logInformKey
+              .currentState!
+              .validate()) {
+            await AuthCubit.get(context).logInAuthentication(context);
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: TextUtils(
+                  text: 'We have validation  errors.', color: Colors.black,),
+              ),
+            );
           }
         },
         style: ElevatedButton.styleFrom(
@@ -51,10 +49,18 @@ Widget buttonsLoginAuth(BuildContext context) {
             borderRadius: BorderRadius.circular(8),
           ),
         ),
-        child: const TextUtils(
-          text: "Log In",
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+        child: BlocBuilder<AuthCubit, AuthState>(
+            builder: (context, state) {
+              if (state is AuthLoading) {
+                return CircularProgressIndicator();
+              } else {
+                return TextUtils(
+                  text: "Log In",
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                );
+              }
+            }
         ),
       ),
       SizedBox(
