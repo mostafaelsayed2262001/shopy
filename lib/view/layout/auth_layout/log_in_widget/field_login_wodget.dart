@@ -14,7 +14,7 @@ Widget fieldsLoginAuth(context) {
       children: [
         TextFormFieldWidget(
             hintText: "Email",
-            controller: TextEditingController(),
+            controller:AuthCubit.get(context).logInEmailController ,
             secure: false,
             validator: (String? value) {
               if (value == null || value.isEmpty) {
@@ -42,7 +42,7 @@ Widget fieldsLoginAuth(context) {
         ),
         TextFormFieldWidget(
             hintText: "Password",
-            controller: TextEditingController(),
+            controller:AuthCubit.get(context).logInPasswordController ,
             secure: false,
             validator: (String? value) {
               if (value == null || value.isEmpty) {

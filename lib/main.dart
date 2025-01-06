@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:shop/data/repository/all_products_repository.dart';
 import 'package:shop/data/repository/categories_repository.dart';
 import 'package:shop/data/services/network/dio/dio_helper.dart';
@@ -18,6 +20,7 @@ import 'package:sizer/sizer.dart';
 void main() async{
   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized(); //
+
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -40,11 +43,18 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           routerConfig: AppRouter.router,
           locale: const Locale("ar"),
-          title: 'Mosti Shop1',
+
+          title: 'Most Shop1',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+
+
             scaffoldBackgroundColor: kBackGroundColor,
-            appBarTheme: AppBarTheme(backgroundColor: kBackGroundColor,
+
+            appBarTheme: AppBarTheme(
+
+                color: kBackGroundColor,
+
                 elevation: 0,
                 iconTheme: IconThemeData(color: kPrimaryColor)),
 
